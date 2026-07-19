@@ -18,7 +18,7 @@ export default function RetirosPage() {
             <div className="flex items-center gap-4">
 
               <div
-                className={`${coloresSedes[retiro.sede]} w-6 h-4 rounded-md`}
+                className={`${coloresSedes[retiro.sede as keyof typeof coloresSedes]} w-6 h-4 rounded-md`}
               />
 
               <p className="font-semibold">
