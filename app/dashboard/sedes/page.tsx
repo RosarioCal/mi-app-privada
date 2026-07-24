@@ -13,13 +13,11 @@ export default function SedesPage() {
 
           <Card key={sede.nombre}>
 
-            <Image
-              src={sede.imagen}
-              alt={sede.nombre}
-              width={600}
-              height={350}
-              className="mb-5 h-52 w-full rounded-xl object-cover"
-            />
+            <img
+  src={sede.imagen}
+  alt={sede.nombre}
+  className="mb-5 h-52 w-full rounded-xl object-cover"
+/>
 
             <h2 className="text-2xl font-semibold text-gray-800">
               {sede.nombre}
