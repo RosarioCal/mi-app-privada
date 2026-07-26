@@ -2,7 +2,7 @@ export const grupos = [
   {
     sede: "Peñalén",
     reuniones: [
-      { dia: "Martes", hora: "20:00", encargada: "Pilar" },
+      { dia: "Martes", hora: "20:00", encargada: "Pilar V." },
       { dia: "Jueves", hora: "10:30", encargada: "Macu C." },
       { dia: "Jueves", hora: "11:00", encargada: "Julia M." },
       { dia: "Jueves", hora: "17:45", encargada: "Pilar C." },
