@@ -1,49 +1,52 @@
 'use client'
+
+import PageTemplate from "@/components/PageTemplate";
 import { grupos } from "@/data/grupos";
+import { coloresSedes } from "@/data/ColoresSedes";
 
 export default function GruposPage() {
+  const reuniones = grupos.flatMap((grupo) =>
+    grupo.reuniones.map((reunion) => ({
+      ...reunion,
+      sede: grupo.sede,
+    }))
+  );
+
   return (
-    <div className="mx-auto max-w-4xl p-6">
-      <h1 className="mb-8 text-center text-3xl font-bold text-blue-900">
-        👥 Grupos de Supernumerarias
-      </h1>
-
-      {grupos.map((grupo) => (
-        <div
-          key={grupo.sede}
-          className="mb-8 rounded-2xl bg-white p-6 shadow-md"
-        >
-          <h2 className="mb-5 text-2xl font-bold text-blue-700">
-            📍 {grupo.sede}
-          </h2>
-
-          <div className="space-y-4">
-            {grupo.reuniones.map((reunion, index) => (
+    <PageTemplate
+      titulo="👥 Grupos de Supernumerarias"
+      subtitulo="Horarios de los grupos"
+    >
+      <div className="space-y-4">
+        {reuniones.map((reunion, index) => (
+          <div
+            key={index}
+            className="rounded-2xl bg-white p-5 shadow-md"
+          >
+            <div className="flex items-center gap-3">
               <div
-                key={index}
-                className="rounded-xl border border-gray-200 p-4"
-              >
-                <div className="grid gap-2 md:grid-cols-3">
-                  <div>
-                    <p className="text-sm text-gray-500">Día</p>
-                    <p className="font-semibold">{reunion.dia}</p>
-                  </div>
+                className={`h-4 w-10 rounded-full ${
+                  coloresSedes[
+                    reunion.sede as keyof typeof coloresSedes
+                  ]
+                }`}
+              />
 
-                  <div>
-                    <p className="text-sm text-gray-500">Hora</p>
-                    <p className="font-semibold">{reunion.hora}</p>
-                  </div>
+              <h2 className="text-xl font-bold text-slate-800">
+                {reunion.dia} · {reunion.hora}
+              </h2>
+            </div>
 
-                  <div>
-                    <p className="text-sm text-gray-500">Encargada</p>
-                    <p className="font-semibold">{reunion.encargada}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
+            <p className="mt-3 text-slate-500">
+              {reunion.sede}
+            </p>
+
+            <p className="mt-4 text-slate-700">
+              👤 {reunion.encargada}
+            </p>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </PageTemplate>
   );
 }
