@@ -1,4 +1,4 @@
-import Image from 'next/image'
+
 import PageTemplate from '@/components/PageTemplate'
 import Card from '@/components/Card'
 import { sedes } from '@/data/sedes'
