@@ -7,14 +7,15 @@ export default function CursosPage() {
       <div className="rounded-2xl bg-white p-6 shadow-md">
 
         <p className="text-xl leading-relaxed text-slate-700">
-          Para consultar e inscribirte, pulsa el botón y accede con tu usuario y contraseña.
+        Para consultar e inscribirte, pulsa el botón y accede con tu{" "}
+         <strong>usuario</strong> y <strong>contraseña</strong>.
         </p>
 
         <a
           href="https://resetmadrid.org/default.aspx"
           target="_blank"
           rel="noreferrer"
-          className="mt-6 block w-full rounded-xl bg-yellow-300 py-3 text-center font-medium text-slate-800 transition hover:bg-yellow-400"
+          className="mt-6 block w-full rounded-xl bg-yellow-200 py-3 text-center font-medium text-slate-800 transition hover:bg-yellow-300"
         >
           Acceder a la web
         </a>
