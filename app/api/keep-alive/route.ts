@@ -8,10 +8,11 @@ export async function GET(request: Request) {
     return new NextResponse("Unauthorized", { status: 401 });
   }
 
-  const { error } = await supabase
+  const { data, error } = await supabase
     .from("keep_alive")
     .update({ updated_at: new Date().toISOString() })
-    .eq("id", 1);
+    .eq("id", 1)
+    .select("id, updated_at");
 
   if (error) {
     console.error("Keep-alive error:", error);
@@ -22,5 +23,17 @@ export async function GET(request: Request) {
     );
   }
 
-  return NextResponse.json({ ok: true });
+  console.log("Keep-alive updated rows:", data);
+
+  if (!data || data.length === 0) {
+    return NextResponse.json(
+      { ok: false, error: "No se actualizó ninguna fila" },
+      { status: 500 }
+    );
+  }
+
+  return NextResponse.json({
+    ok: true,
+    updated: data,
+  });
 }
