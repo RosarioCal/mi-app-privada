@@ -5,12 +5,16 @@ type Props = {
   titulo: string
   subtitulo?: string
   children: ReactNode
+  volverHref?: string
+  volverTexto?: string
 }
 
 export default function PageTemplate({
   titulo,
   subtitulo,
   children,
+  volverHref = '/dashboard',
+  volverTexto = 'Inicio',
 }: Props) {
   return (
     <main className="min-h-screen bg-gray-100 flex justify-center px-4 py-8">
@@ -22,19 +26,19 @@ export default function PageTemplate({
           </h1>
 
           {subtitulo && (
-         <p className="mt-2 text-lg text-gray-600 font-medium">
-          {subtitulo}
-        </p>
+            <p className="mt-2 text-lg text-gray-600 font-medium">
+              {subtitulo}
+            </p>
           )}
         </div>
 
         {children}
 
         <Link
-          href="/dashboard"
+          href={volverHref}
           className="mt-8 inline-block rounded-xl bg-slate-700 px-6 py-3 text-white transition hover:bg-slate-800"
         >
-          ← Inicio
+          ← {volverTexto}
         </Link>
 
       </div>
